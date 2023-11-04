@@ -1,0 +1,116 @@
+.main {
+  max-width: 66.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.main .container {
+  box-shadow: rgba(88, 191, 249, 0.204) 0px 14px 20px;
+  background-color: var(--white);
+  border-radius: 1rem;
+  padding: 3.6rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.container .header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  padding: 0 3.6rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.header .data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.header .data .title {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--button-blue);
+  margin-bottom: 0.3rem;
+}
+
+.header .data .status {
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: rgb(24, 30, 69);
+}
+
+.header .data .status span {
+  font-weight: 600;
+  color: var(--button-red);
+}
+
+.header .data .datetime {
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: rgb(24, 30, 69);
+
+}
+
+.container .body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 2rem 3.6rem 0;
+}
+
+.body .message {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.8rem 1.6rem;
+  background-color: rgb(251, 226, 232);
+  border-radius: 0.8rem;
+  gap: 2rem;
+}
+
+.body .message .icon {
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 0.8rem;
+  padding: 0.7rem;
+  background-color: rgba(226, 63, 101, 0.25);
+  background-image: url('/images/warn-circle.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.body .message .text {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: rgb(113, 21, 43);
+  margin-right: 2rem;
+}
+
+.body .send_message {
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: rgb(24, 30, 69);
+}
+
+@media screen and (max-width: 860px) {
+  .container .header,
+  .container .body {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .body .message {
+    gap: 0.7rem;
+  }
+
+  .body .message .text {
+    margin-right: 0;
+    width: 100%;
+  }
+}

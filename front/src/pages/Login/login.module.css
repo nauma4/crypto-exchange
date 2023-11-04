@@ -1,0 +1,85 @@
+.main {
+  max-width: 92.6rem;
+  min-height: 10rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.main .container {
+  box-shadow: rgba(88, 191, 249, 0.204) 0px 14px 20px;
+  background-color: var(--white);
+  border-radius: 0.4rem;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.main .container .block {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.block .content {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 3rem;
+}
+
+.block .content .title {
+  font-size: 4.1rem;
+  color: rgb(0, 198, 255);
+}
+
+.block .footer {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 3rem;
+}
+
+.footer .label {
+  display: flex;
+  align-self: center;
+  margin-top: 2rem;
+}
+
+.footer .label a {
+  color: rgb(226, 63, 101);
+  text-decoration: underline;
+}
+
+.main .container .cover {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background: linear-gradient(213.49deg, rgb(56, 62, 101) 0%, rgb(24, 30, 69) 100%);
+  color: var(--white);
+}
+
+.cover .logo {
+  display: flex;
+  background-image: url('/images/register/logo.svg');
+  width: 32.7rem;
+  height: calc(32.7rem / 1.27);
+  align-self: center;
+}
+
+.cover .title {
+  display: flex;
+  align-self: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.6rem;
+}
+
+.cover .description {
+  display: flex;
+  padding: 0 4rem;
+}
+
+.cover .caption {
+  padding: 1rem 4rem 4rem;
+}

@@ -1,0 +1,111 @@
+.main {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	gap: 3rem;
+	position: relative;
+}
+
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+}
+
+.main .inBlock {
+	display: flex;
+	flex-direction: column;
+}
+
+.main .outBlock {
+	display: flex;
+	flex-direction: column;
+}
+
+.main .inBlock,
+.main .outBlock {
+	box-shadow: rgba(88, 191, 249, 0.204) 0px 14px 20px;
+	background-color: var(--white);
+	width: calc(50% - 1.5rem);
+	border-radius: 1rem;
+	padding: 3.6rem;
+}
+
+.main::after {
+	content: "";
+	background-image: url("/images/crossArrowsIcon.svg");
+	background-repeat: none;
+	width: 5rem;
+	height: 5rem;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.tradeBlock {
+	display: flex;
+	flex-direction: column;
+}
+
+.tradeBlock .title {
+	color: var(--button-blue);
+	font-size: 3.6rem;
+	font-weight: 600;
+	margin-bottom: 3.6rem;
+}
+
+.tradeBlock .select {
+	margin-bottom: 1rem;
+}
+
+.tradeBlock .address {
+	margin-bottom: 1rem;
+}
+
+.tradeBlock .info {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 3rem;
+	gap: 0.5rem;
+}
+
+.tradeBlock .text {
+	font-size: 1.2rem;
+	color: rgb(96, 87, 136);
+}
+
+.tradeBlock .accept {
+	color: rgb(96, 87, 136);
+	font-size: 1.2rem;
+	font-weight: 400;
+	margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 860px) {
+	.main {
+		flex-direction: column;
+		gap: 0;
+	}
+
+  .main::after {
+    display: none;
+  }
+
+	.main .inBlock,
+	.main .outBlock {
+		width: unset;
+	}
+
+  .main .inBlock {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-bottom: 0;
+  }
+  .main .outBlock {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}

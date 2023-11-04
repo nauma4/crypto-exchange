@@ -1,0 +1,24 @@
+{
+  "name": "fire-exchange-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.5.1",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jwt-simple": "^0.5.6",
+    "mongoose": "^7.6.1",
+    "node-telegram-bot-api": "^0.64.0",
+    "nodemailer": "^6.9.6",
+    "nodemailer-smtp-transport": "^2.7.4"
+  }
+}
