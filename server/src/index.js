@@ -1,6 +1,7 @@
 require("dotenv").config({ path: '.env.local' });
 
 const express = require("express");
+const cors = require('cors');
 const mongoose = require("./mongodb");
 // const adminBot = require("./admin_bot");
 const { server } = require("./rest");
@@ -69,6 +70,7 @@ function main() {
 	});
 
 	//
+	server.use(cors())
 	server.use("/api", router);
 
 	// const valute = new mongoose.Valute({

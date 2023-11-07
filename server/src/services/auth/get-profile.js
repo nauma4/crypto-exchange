@@ -14,7 +14,7 @@ module.exports = async (data) => {
 			general: {
 				email: user.email,
 				login: user.login,
-				fullname: user.fullname,
+				fullName: user.fullName,
 				phone: user.mobile_number,
 			},
 
@@ -28,7 +28,7 @@ module.exports = async (data) => {
 				return {
 					login: user.login,
 					email: user.email,
-					fullname: user.fullname,
+					fullName: user.fullName,
 					number: user.number,
 				};
 			});

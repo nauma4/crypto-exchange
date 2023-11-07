@@ -14,7 +14,7 @@ module.exports = async (data) => {
 		const decoded = jwt.decode(token, process.env.SECRET);
 		await User.findOneAndUpdate(
 			{ _id: decoded.userId },
-			{ email: data.email, mobile_number: data.phone, login: data.login }
+			{ email: data.email, mobile_number: data.phone, login: data.login, fullName: data.fullName }
 		);
 		return { status: true, result: "ok" };
 	} catch (e) {
