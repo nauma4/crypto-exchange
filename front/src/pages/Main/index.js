@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
 
 import Select from "components/Select";
@@ -10,11 +11,9 @@ import { moneyMask } from "helpers/displayCoinPrice";
 
 import { getValuteList, getValuteForms } from "api/valutes";
 import { addTransaction } from "api/transactions";
-
-import { useForms, FormProvider } from "./Form";
+import { FormProvider, useForms } from "store/FormProvider";
 
 import styles from "./main.module.css";
-import { useRouter } from "next/router";
 
 export default function MainPage() {
 	return (

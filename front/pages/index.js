@@ -6,7 +6,7 @@ import MainPage from 'pages/Main'
 export default function HomePage () {
   return (
     <Layout metadata={{
-      title: 'Home | Fire Exchange'
+      title: 'Главная | Fire Exchange'
     }}>
       <MainPage />
     </Layout>

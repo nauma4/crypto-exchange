@@ -1,24 +1,16 @@
 import React from "react";
 import clsx from "clsx";
 import Link from "next/link";
-import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
+import { useAuth } from "store/AuthorizationProvider";
 
 import Button from "../Button";
 
 import styles from "./sidebar.module.css";
 
 export default function SidebarMenu({ isOpen, toggleSidebar }) {
-	const [cookies, setCookies] = useCookies();
-	const [isAuth, setAuth] = React.useState(false);
 	const router = useRouter();
-
-	React.useEffect(() => {
-		if (!!cookies.token && cookies.token !== "undefined") setAuth({
-			email: cookies.email
-		});
-		else setAuth(false)
-	}, [cookies]);
+	const { isLogin, user } = useAuth();
 
 	return (
 		<div className={clsx(styles.sidebar, { [styles.open]: isOpen })}>
@@ -61,9 +53,9 @@ export default function SidebarMenu({ isOpen, toggleSidebar }) {
 					</Link>
 				</div>
 				<div className={styles.account}>
-					{isAuth ? (
+					{isLogin ? (
 						<Button color="red" onClick={() => router.push("/profile")}>
-							{isAuth.email.split("@")[0].toUpperCase() || "User"}
+							{user?.fullName || user?.login || user?.email || "Загрузка..."}
 						</Button>
 					) : (
 						<>

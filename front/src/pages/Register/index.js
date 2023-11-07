@@ -1,28 +1,19 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useCookies } from "react-cookie";
 
 import TextInput from "components/TextInput";
 import Button from "components/Button";
 import { useAlert } from "components/Alert";
-
-import { register } from "api/authorization";
+import { useAuth } from "store/AuthorizationProvider";
+import { validateEmail } from "helpers/email";
 
 import styles from "./register.module.css";
-
-const validateEmail = (email) => {
-	return String(email)
-		.toLowerCase()
-		.match(
-			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-		);
-};
 
 export default function RegisterPage() {
 	const router = useRouter();
 	const { showAlert } = useAlert();
-	const [cookies, setCookie] = useCookies();
+	const { isLogin, requestRegister } = useAuth();
 
 	const [isLoading, setLoading] = React.useState(false);
 	const [email, setEmail] = React.useState("");
@@ -36,20 +27,18 @@ export default function RegisterPage() {
 
 		const referal = window.localStorage.getItem('referal') || null;
 
-		const response = await register(email, password, referal);
+		const response = await requestRegister(email, password, referal);
 		if (!response.status) {
 			showAlert("Ошибка", response.message);
 		} else {
-			setCookie("email", response.result.email);
-			setCookie("token", response.result.token);
 			router.push("/");
 		}
 		setLoading(false);
 	};
 
 	React.useEffect(() => {
-		if (cookies.token && cookies.token !== 'undefined') router.push("/");
-	}, [cookies]);
+		if (isLogin) router.push("/");
+	}, [isLogin]);
 
 	return (
 		<div className={styles.main}>

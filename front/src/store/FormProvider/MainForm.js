@@ -1,32 +1,5 @@
-import { createContext, useContext, useState, useEffect } from "react";
-
-export const FormContext = createContext({
-	valuteList: { give: [], get: [] },
-	setValuteList: () => {},
-
-	give: {
-		setValutes: () => {},
-		count: "",
-		setCount: () => {},
-		valute: null,
-		setValute: () => {},
-		email: null,
-		setEmail: () => {},
-	},
-	get: {
-		setValutes: () => {},
-		count: "",
-		setCount: () => {},
-		valute: null,
-		setValute: () => {},
-		forms: [],
-		setForms: () => {},
-		data: {},
-		onChangeData: () => {},
-	},
-	isValid: true,
-	setValid: () => {},
-});
+import { useState, useEffect } from "react";
+import { FormContext } from "./Context";
 
 export const FormProvider = ({ children }) => {
 	const [isValid, setValid] = useState(true);
@@ -119,5 +92,3 @@ export const FormProvider = ({ children }) => {
 		</FormContext.Provider>
 	);
 };
-
-export const useForms = () => useContext(FormContext);

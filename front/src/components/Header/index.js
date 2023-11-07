@@ -1,24 +1,16 @@
 import React from "react";
 import clsx from "clsx";
 import Link from "next/link";
-import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
 
 import Button from "../Button";
+import { useAuth } from 'store/AuthorizationProvider'
 
 import styles from "./header.module.css";
 
 const Header = ({ toggleSidebar }) => {
-	const [cookies, setCookies] = useCookies();
-	const [isAuth, setAuth] = React.useState(false);
 	const router = useRouter();
-
-	React.useEffect(() => {
-		if (!!cookies.token && cookies.token !== "undefined") setAuth({
-			email: cookies.email
-		});
-		else setAuth(false)
-	}, [cookies]);
+	const { isLogin, user } = useAuth()
 
 	return (
 		<div className={styles.header}>
@@ -29,10 +21,10 @@ const Header = ({ toggleSidebar }) => {
 					<span className={styles.automate}>Автоматический обмен</span>
 					<span className={styles.i24_7}>Тех. поддержка</span>
 				</div>
-				{isAuth ? (
+				{isLogin ? (
 					<div className={styles.menu}>
 						<Button color="red" onClick={() => router.push("/profile")}>
-							{isAuth.email.split("@")[0].toUpperCase() || "User"}
+							{user?.fullName || user?.login || user?.email || 'Загрузка...'}
 						</Button>
 					</div>
 				) : (
