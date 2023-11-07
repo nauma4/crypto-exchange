@@ -110,6 +110,7 @@ module.exports = async function (response) {
 	};
 
 	const validContent = (form) => {
+		if (form.regexp === '') return true;
 		let parts = /\/(.*)\/(.*)/.exec(form.regexp.toString());
 		let regexp = new RegExp(parts[1], parts[2]);
 

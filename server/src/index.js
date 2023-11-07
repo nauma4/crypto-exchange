@@ -1,8 +1,8 @@
-require("dotenv").config();
+require("dotenv").config({ path: '.env.local' });
 
 const express = require("express");
 const mongoose = require("./mongodb");
-const adminBot = require("./admin_bot");
+// const adminBot = require("./admin_bot");
 const { server } = require("./rest");
 const { auth, valutes, transactions } = require("./services");
 const daemon = require("./coinapi");
