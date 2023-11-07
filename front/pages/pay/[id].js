@@ -6,7 +6,7 @@ import Pay from 'pages/Pay'
 export default function PayPage () {
   return (
     <Layout metadata={{
-      title: 'Confirmation | Fire Exchange'
+      title: 'Оплата | Fire Exchange'
     }}>
       <Pay />
     </Layout>

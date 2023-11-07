@@ -6,7 +6,7 @@ import Confirmation from 'pages/Confirmation'
 export default function ConfPage () {
   return (
     <Layout metadata={{
-      title: 'Confirmation | Fire Exchange'
+      title: 'Подтверждение | Fire Exchange'
     }}>
       <Confirmation />
     </Layout>

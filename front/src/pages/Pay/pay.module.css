@@ -45,8 +45,13 @@
   color: rgb(24, 30, 69);
 }
 
+
 .header .data .status span {
   font-weight: 600;
+  color: var(--button-blue);
+}
+
+.header .data .status.red span {
   color: var(--button-red);
 }
 

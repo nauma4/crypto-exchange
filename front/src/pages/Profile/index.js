@@ -140,7 +140,7 @@ const EditProfileContainer = ({ token }) => {
 			/>
 			<TextInput
 				label="Ваша реферальная ссылка:"
-				value={`http://fire-exchange.online/?referal_id=${data.referal_link}`}
+				value={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/?referal_id=${data.referal_link}`}
 			/>
 			<Button disabled={isLoading} onClick={handleChange}>
 				Сохранить

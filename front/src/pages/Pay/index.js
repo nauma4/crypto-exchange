@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from 'clsx';
 import { useRouter } from "next/router";
 
 import Input from "components/Input";
@@ -20,6 +21,15 @@ export default function PayPage() {
 		setLoading(false);
 	};
 
+	const getStatusText = status => {
+		if (status === 0) return 'Ожидает оплаты'
+		if (status === 1) return 'Выполнена'
+		if (status === 2) return 'В процессе выплаты'
+		if (status === 3) return 'Что-то не так'
+		if (status === 4) return 'Закрыта'
+		return 'Ошибка'
+	}
+
 	React.useEffect(() => {
 		loadData(router.query.id);
 	}, [router.query]);
@@ -27,6 +37,7 @@ export default function PayPage() {
 	if (!transaction && isLoading) return <p>Loading...</p>;
 
 	const t = transaction;
+	
 
 	return (
 		<div className={styles.main}>
@@ -34,8 +45,11 @@ export default function PayPage() {
 				<div className={styles.header}>
 					<div className={styles.data}>
 						<p className={styles.title}>Заявка #{t.order_id}</p>
-						<p className={styles.status}>
-							Статус: <span>Ожидает оплаты</span>
+						<p className={clsx(styles.status, {
+							[styles.red]: t.status === 0 || t.status === 3 || t.status === 4,
+							[styles.blue]: t.status === 1 || t.status === 2,
+						})}>
+							Статус: <span>{getStatusText(t.status)}</span>
 						</p>
 						{/* <p className={styles.datetime}>
 							Врем зафиксированного курса: <b>1:25</b>

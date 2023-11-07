@@ -38,17 +38,9 @@ export const FormProvider = ({ children }) => {
 		let summMaxGetCourse = getValute.course * getValute.max_get
 		let summMinGetCourse = getValute.course * getValute.min_give
 
-
 		setGetCount(+summGetCount.toFixed(9));
 
-		// console.log("------START--------");
-		// console.log({ summGiveCount, giveValute });
-		// console.log({ summGetCount, getValute });
-		// console.log({ isValid });
-
-		// console.log(summGiveCount < summMinGiveCourse, summGetCount > summMaxGetCourse, summGetCount < summMinGetCourse, summGetCount,  summMinGetCourse)
-
-		if (summGiveCount < summMinGiveCourse || summGetCount > summMaxGetCourse || summGetCount > summMinGetCourse) {
+		if (summGiveCount < summMinGiveCourse || summGetCount > summMaxGetCourse || summGiveCount < summMinGetCourse) {
 			setValid(false);
 		} else {
 			setValid(true)
