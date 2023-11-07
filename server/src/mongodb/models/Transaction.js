@@ -16,7 +16,7 @@ let schema = mongoose.Schema({
 
 	status: {
 		type: Number,
-		default: 0
+		default: 0 // 0 new transaction, 1 complete, 2 in process, 3 is error, 4 is closed
 	},
 
 	give_valute: {

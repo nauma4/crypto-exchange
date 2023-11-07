@@ -179,11 +179,16 @@ module.exports = async function (response) {
 
 			return await Transaction.create({ ...data })
 				.then((transaction) => {
+
+					// notify on chat
+					global.telegram.controller.sendMessage(`Новая заявка на обмен: ${transaction.order_id}`)
+
 					return {
 						status: true,
 						result: {
 							id: transaction._id,
 							status: transaction.status,
+							order_id: transaction.order_id,
 							datetime: transaction.date,
 							give: {
 								id: transaction.give_valute.valute_id,

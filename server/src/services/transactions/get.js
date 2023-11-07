@@ -6,7 +6,12 @@ const Valute = database.Valute;
 const ValuteForm = database.ValuteForm;
 
 module.exports = async function (data) {
-	const transaction = await Transaction.findById(data.id);
+	let transaction = null;
+	if (data.order_id) {
+		transaction = await Transaction.findOne({ order_id: data.order_id });
+	} else {
+		transaction = await Transaction.findById(data.id);
+	}
 	const wallet = await Wallet.findById(transaction.wallet_id);
 
 	let getValutePercents = Valute.findOne({
@@ -45,6 +50,7 @@ module.exports = async function (data) {
 					datetime: transaction.date,
 					give: {
 						id: transaction.give_valute.valute_id,
+						name: results[1].name,
 						key: results[1].key,
 						image: global.PUBLIC_PATH + results[1].image,
 						count: transaction.give_valute.count,
@@ -56,6 +62,7 @@ module.exports = async function (data) {
 					get: {
 						id: transaction.get_valute.valute_id,
 						course: transaction.get_valute.course,
+						name: results[0].name,
 						key: results[0].key,
 						image: global.PUBLIC_PATH + results[0].image,
 						percent_get: results[0].percent_get,
