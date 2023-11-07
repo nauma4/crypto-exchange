@@ -50,6 +50,7 @@ function Main() {
 				forms: {
 					count: give.count,
 				},
+				email: give.email,
 			},
 			get: {
 				valute_id: get.valute.id,
@@ -63,7 +64,7 @@ function Main() {
 		if (!response.status && response.error) {
 			showAlert("Ошибка", response.message);
 		} else {
-			router.push(`/transactions/${response.result.id}`);
+			router.push(`/t/${response.result.id}`);
 		}
 	};
 

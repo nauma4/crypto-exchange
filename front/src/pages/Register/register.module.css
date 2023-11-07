@@ -83,3 +83,9 @@
 .cover .caption {
   padding: 1rem 4rem 4rem;
 }
+
+@media screen and (max-width: 600px) {
+  .main .container {
+    flex-direction: column-reverse;
+  }
+}
