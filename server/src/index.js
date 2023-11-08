@@ -8,7 +8,7 @@ const { server } = require("./rest");
 const { auth, valutes, transactions } = require("./services");
 const daemon = require("./coinapi");
 
-global.PUBLIC_PATH = "http://localhost:8080";
+global.PUBLIC_PATH = process.env.DOMAIN_NAME;
 
 function main() {
 	server.use("/public", express.static("public"));
