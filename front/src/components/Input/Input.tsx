@@ -1,8 +1,16 @@
 import React from "react";
 
-import styles from './input.module.css'
+import styles from "./input.module.css";
 
-export default function Input ({ label, value, iconEnd }) {
+export interface InputPropTypes {
+  label?: string;
+  value?: string;
+}
+
+export const InputComponent: React.FC<InputPropTypes> = ({
+  label,
+  value,
+}): React.ReactElement => {
   return (
     <div className={styles.container}>
       <span className={styles.label}>{label}</span>
@@ -11,5 +19,5 @@ export default function Input ({ label, value, iconEnd }) {
         <div className={styles.icon}></div>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -1,8 +1,8 @@
 import React from "react";
 
-import styles from './footer.module.css'
+import styles from './footer.module.scss'
 
-export default function Footer() {
+export function FooterComponent() {
 	const mail = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || 'support@exchange.com'
 
 	return (

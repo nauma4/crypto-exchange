@@ -7,7 +7,7 @@ import TextInput from "components/TextInput";
 import Button from "components/Button";
 import Spinner from "components/Spinner";
 import { useAlert } from "components/Alert";
-import { getProfile, editProfile, editPassword } from "api/profile";
+import { getProfile, editProfile, editPassword } from "@/api/profile";
 
 import styles from "./profile.module.css";
 

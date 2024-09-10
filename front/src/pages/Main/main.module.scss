@@ -1,0 +1,103 @@
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 3rem;
+  position: relative;
+
+  &::after {
+    content: "";
+    background-image: url("/images/crossArrowsIcon.svg");
+    background-repeat: none;
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  .inBlock,
+  .outBlock {
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(88, 191, 249, 0.204) 0px 14px 20px;
+    background-color: var(--white);
+    width: calc(50% - 1.5rem);
+    border-radius: 1rem;
+    padding: 3.6rem;
+  }
+
+  .tradeBlock {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      color: var(--button-blue);
+      font-size: 3.6rem;
+      font-weight: 600;
+      margin-bottom: 3.6rem;
+    }
+
+    .select {
+      margin-bottom: 1rem;
+    }
+
+    .address {
+      margin-bottom: 1rem;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 3rem;
+      gap: 0.5rem;
+    }
+
+    .text {
+      font-size: 1.2rem;
+      color: rgb(96, 87, 136);
+    }
+    .accept {
+      color: rgb(96, 87, 136);
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .main {
+    flex-direction: column;
+    gap: 0;
+
+    &::after {
+      display: none;
+    }
+
+    .inBlock,
+    .outBlock {
+      width: unset;
+    }
+
+		.inBlock {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+			padding-bottom: 0;
+		}
+
+		.outBlock {
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+		}
+  }
+}

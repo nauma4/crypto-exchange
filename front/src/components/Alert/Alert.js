@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-import { useOnClickOutside } from 'helpers/useOnClickOutside'
+import { useOnClickOutside } from '@/helpers/useOnClickOutside'
 
 import styles from "./alert.module.css";
 

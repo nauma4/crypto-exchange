@@ -2,18 +2,18 @@ import React from "react";
 import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
 
-import Select from "components/Select";
-import TextInput from "components/TextInput";
-import Button from "components/Button";
-import Spinner from "components/Spinner";
-import { useAlert } from "components/Alert";
-import { moneyMask } from "helpers/displayCoinPrice";
+import Select from "@/components/Select";
+import TextInput from "@/components/TextInput";
+import Button from "@/components/Button";
+import Spinner from "@/components/Spinner";
+import { useAlert } from "@/components/Alert";
+import { moneyMask } from "@/helpers/displayCoinPrice";
 
-import { getValuteList, getValuteForms } from "api/valutes";
-import { addTransaction } from "api/transactions";
-import { FormProvider, useForms } from "store/FormProvider";
+import { getValuteList, getValuteForms } from "@/api/valutes";
+import { addTransaction } from "@/api/transactions";
+import { FormProvider, useForms } from "@/store/FormProvider";
 
-import styles from "./main.module.css";
+import styles from "./main.module.scss";
 
 export default function MainPage() {
 	return (

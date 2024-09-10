@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { AuthContext } from "./Context";
-import { login, register } from 'api/authorization'
-import { getProfile } from 'api/profile'
+import { login, register } from '@/api/authorization'
+import { getProfile } from '@/api/profile'
 
 export const AuthorizationProvider = ({ children }) => {
   const [cookies, setCookie] = useCookies();

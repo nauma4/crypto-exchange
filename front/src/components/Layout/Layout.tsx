@@ -5,13 +5,23 @@ import Header from "../Header";
 import Footer from "../Footer";
 import Sidebar from "../Sidebar";
 
-import styles from "./layout.module.css";
+import styles from "./layout.module.scss";
 
-export default function Layout({
+export interface LayoutMetadataProps {
+	title?: string
+	description?: string
+}
+
+export interface LayoutComponentPropTypes {
+	metadata?: LayoutMetadataProps
+	children?: React.ReactElement | React.ReactNode
+}
+
+export const LayoutComponent: React.FC<LayoutComponentPropTypes> = ({
 	metadata = { title: "Fire Exchange", description: "" },
 	children,
-}) {
-	const [isOpen, setOpen] = React.useState(false);
+}): React.ReactElement => {
+	const [isOpen, setOpen] = React.useState<boolean>(false);
 
 	const toggleSidebar = () => setOpen((value) => !value);
 
@@ -30,3 +40,4 @@ export default function Layout({
 		</div>
 	);
 }
+
