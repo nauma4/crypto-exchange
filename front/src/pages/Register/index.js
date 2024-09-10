@@ -2,11 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import TextInput from "components/TextInput";
-import Button from "components/Button";
-import { useAlert } from "components/Alert";
-import { useAuth } from "store/AuthorizationProvider";
-import { validateEmail } from "helpers/email";
+import TextInput from "@/components/TextInput";
+import Button from "@/components/Button";
+import { useAlert } from "@/components/Alert";
+import { useAuth } from "@/store/AuthorizationProvider";
+import { validateEmail } from "@/helpers/email";
 
 import styles from "./register.module.css";
 

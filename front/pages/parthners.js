@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Layout from 'components/Layout'
-import Parthners from 'pages/Parthners'
+import Layout from '@/components/Layout'
+import Parthners from '@/pages/Parthners'
 
 export default function ParthnersPage () {
   return (

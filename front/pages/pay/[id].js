@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Layout from 'components/Layout'
-import Pay from 'pages/Pay'
+import Layout from '@/components/Layout'
+import Pay from '@/pages/Pay'
 
 export default function PayPage () {
   return (

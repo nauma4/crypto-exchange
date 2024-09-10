@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 
 import styles from "./confirmation.module.css";
 
-import Button from "components/Button";
-import TextInput from "components/TextInput";
-import Spinner from "components/Spinner";
+import Button from "@/components/Button";
+import TextInput from "@/components/TextInput";
+import Spinner from "@/components/Spinner";
 
-import { getTransaction } from "api/transactions";
+import { getTransaction } from "@/api/transactions";
 
 
 export default function ConfirmationPage() {

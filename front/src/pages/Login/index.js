@@ -2,11 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { useAlert } from "components/Alert";
-import TextInput from "components/TextInput";
-import Button from "components/Button";
-import { useAuth } from "store/AuthorizationProvider";
-import { validateEmail } from "helpers/email";
+import { useAlert } from "@/components/Alert";
+import TextInput from "@/components/TextInput";
+import Button from "@/components/Button";
+import { useAuth } from "@/store/AuthorizationProvider";
+import { validateEmail } from "@/helpers/email";
 
 import styles from "./login.module.css";
 

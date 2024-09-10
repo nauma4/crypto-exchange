@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { useRouter } from "next/router";
 
 import Input from "components/Input";
-import { getTransaction } from "api/transactions";
+import { getTransaction } from "@/api/transactions";
 
 import styles from "./pay.module.css";
 
