@@ -1,0 +1,75 @@
+.main {
+	max-width: 92.6rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+}
+
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+}
+
+.main .container {
+	box-shadow: rgba(88, 191, 249, 0.204) 0px 14px 20px;
+	background-color: var(--white);
+	border-radius: 1rem;
+	padding: 3.6rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.container .header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	flex: 1;
+	padding-bottom: 1rem;
+}
+
+.header .title {
+	font-size: 3.6rem;
+	font-weight: 600;
+	color: var(--button-blue);
+	margin-bottom: 0.3rem;
+}
+
+.container .body {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.body .valute {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid rgb(246, 246, 246);
+	border-radius: 0.8rem;
+	margin: 0.6rem;
+	padding: 0.8rem;
+  align-items: center;
+  max-width: calc(16.6667% - 12px);
+  min-width: 13.2rem;
+}
+
+.valute .image {
+	width: 4.2rem;
+	height: 4.2rem;
+}
+
+.valute .value {
+	font-size: 1.4rem;
+	margin-top: 0.8rem;
+  color: rgb(24, 30, 69);
+
+}
+
+.valute .title {
+  font-size: 1.2rem;
+  color: rgb(153, 150, 167);
+  margin-top: 1.8rem;
+  text-wrap: wrap;
+}
