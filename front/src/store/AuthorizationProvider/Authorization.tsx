@@ -1,69 +1,75 @@
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
-import { AuthContext } from "./Context";
-import { login, register } from '@/api/authorization'
-import { getProfile } from '@/api/profile'
+import { AuthContext, AuthUserTypes } from "./Context";
+import { login, register } from "@/api/authorization";
+import { getProfile } from "@/api/profile";
 
-export const AuthorizationProvider = ({ children }) => {
+type AuthorizationProviderPropTypes = {
+  children: React.ReactNode;
+};
+
+export const AuthorizationProvider: React.FC<
+  AuthorizationProviderPropTypes
+> = ({ children }) => {
   const [cookies, setCookie] = useCookies();
 
-  const [isLogin, setLogin] = useState(false);
-	const [token, setToken] = useState(null);
-	const [user, setUser] = useState(null);
+  const [isLogin, setLogin] = useState<boolean>(false);
+  const [token, setToken] = useState<string | null>(null);
+  const [user, setUser] = useState<AuthUserTypes | null>(null);
 
-	const requestLogin = async (email, password) => {
+  const requestLogin = async (email: string, password: string) => {
     const response = await login(email, password);
     if (response.status) {
-      const token = response.result.token
+      const token = response.result.token;
       setCookie("token", token);
-      setToken(token)
-      setLogin(true)
+      setToken(token);
+      setLogin(true);
     }
-    return response
+    return response;
   };
 
-	const requestRegister = async (email, password, referal) => {
-    const response = await register(email, password, referal);
+  const requestRegister = async (email: string, password: string) => {
+    const response = await register(email, password);
     if (response.status) {
-      const token = response.result.token
+      const token = response.result.token;
       setCookie("token", token);
-      setToken(token)
-      setLogin(true)
+      setToken(token);
+      setLogin(true);
     }
-    return response
+    return response;
   };
 
-	const updateUser = async () => {
+  const updateUser = async () => {
     const response = await getProfile(token);
     setUser(response.general);
-    return response
+    return response;
   };
 
   useEffect(() => {
-    updateUser()
-  }, [token])
+    updateUser();
+  }, [token]);
 
   useEffect(() => {
     if (cookies.token && cookies.token.length) {
       setToken(cookies.token);
-      setLogin(true)
+      setLogin(true);
     } else {
-      setLogin(false)
+      setLogin(false);
     }
-  }, [cookies])
+  }, [cookies]);
 
-	return (
-		<AuthContext.Provider
-			value={{
-				isLogin,
-				token,
-				user,
-				requestLogin,
-				requestRegister,
+  return (
+    <AuthContext.Provider
+      value={{
+        isLogin,
+        token,
+        user,
+        requestLogin,
+        requestRegister,
         updateUser,
-			}}
-		>
-			{children}
-		</AuthContext.Provider>
-	);
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };

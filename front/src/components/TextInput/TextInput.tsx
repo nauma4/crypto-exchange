@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import styles from "./textinput.module.scss";
 
-export interface TextInputPropTypes {
+export type TextInputPropTypes = {
   className?: string;
   type?: HTMLInputTypeAttribute;
   placeholder?: string;
@@ -25,6 +25,7 @@ export const TextInputComponent: React.FC<TextInputPropTypes> = ({
   showError,
   value,
   onChange,
+  ...props
 }): React.ReactElement => {
   const [isFocus, setFocus] = React.useState<boolean>(false);
 
@@ -55,6 +56,7 @@ export const TextInputComponent: React.FC<TextInputPropTypes> = ({
           onBlur={abortFocus}
           value={value}
           onChange={onChangeText}
+          {...props}
         />
         {labelEnd && <span className={styles.label}>{labelEnd}</span>}
       </div>

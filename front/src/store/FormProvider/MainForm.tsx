@@ -1,86 +1,97 @@
 import { useState, useEffect } from "react";
-import { FormContext } from "./Context";
+import { FormContext, ValuteItemType, ValuteFormItemType, FormValuteListType } from "./Context";
 
-export const FormProvider = ({ children }) => {
-	const [isValid, setValid] = useState(true);
+type FormProviderPropTypes = {
+  children: React.ReactNode;
+};
 
-	const [valuteList, setValuteList] = useState(null);
-	const [giveValute, setGiveValute] = useState(null);
-	const [giveCount, setGiveCount] = useState("");
-	const [email, setEmail] = useState("");
+export const FormProvider: React.FC<FormProviderPropTypes> = ({ children }) => {
+  const [isValid, setValid] = useState<boolean>(true);
 
-	const [getValute, setGetValute] = useState(null);
-	const [getCount, setGetCount] = useState("");
-	const [getValuteForms, setGetValuteForms] = useState([]);
-	const [getValuteData, setGetValuteData] = useState({});
+  const [valuteList, setValuteList] = useState<FormValuteListType>({ get: [], give: [] });
+  const [giveValute, setGiveValute] = useState<ValuteItemType | null>(null);
+  const [giveCount, setGiveCount] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
 
-	const onChangeData = (name) => {
-		return (value) => {
-			setGetValuteData((data) => {
-				return {
-					...data,
-					[name]: value,
-				};
-			});
-		};
-	};
+  const [getValute, setGetValute] = useState<ValuteItemType | null>(null);
+  const [getCount, setGetCount] = useState<string>("");
+  const [getValuteForms, setGetValuteForms] = useState<ValuteFormItemType[]>([]);
+  const [getValuteData, setGetValuteData] = useState<Record<string, string>>({});
 
-	const calculateCount = (count, giveValute, getValute) => {
-		if (!giveValute || !getValute) return null;
+  const onChangeData = (name: string) => {
+    return (value: string) => {
+      return setGetValuteData((data) => {
+        return {
+          ...data,
+          [name]: value,
+        };
+      });
+    };
+  };
 
-		// GENERAL COURSE
-		let course = giveValute.course * 0.95
-		// end
-		let summGiveCount = +count * course;
-		let summMinGiveCourse = course * giveValute.min_give
-		
-		let summGetCount = summGiveCount / getValute.course;
-		let summMaxGetCourse = getValute.course * getValute.max_get
-		let summMinGetCourse = getValute.course * getValute.min_give
+  const calculateCount = (
+    count: string,
+    giveValute: ValuteItemType | null,
+    getValute: ValuteItemType | null
+  ) => {
+    if (!giveValute || !getValute) return null;
 
-		setGetCount(+summGetCount.toFixed(9));
+    // GENERAL COURSE
+    const course = giveValute.course * 0.95;
+    // end
+    const summGiveCount = +count * course;
+    const summMinGiveCourse = course * giveValute.min_give;
 
-		if (summGiveCount < summMinGiveCourse || summGetCount > summMaxGetCourse || summGiveCount < summMinGetCourse) {
-			setValid(false);
-		} else {
-			setValid(true)
-		}
-	};
+    const summGetCount = summGiveCount / getValute.course;
+    const summMaxGetCourse = getValute.course * getValute.max_get;
+    const summMinGetCourse = getValute.course * getValute.min_give;
 
-	useEffect(() => {
-		calculateCount(giveCount, giveValute, getValute);
-	}, [giveCount, giveValute, getValute]);
+    setGetCount(summGetCount.toFixed(9));
 
+    if (
+      summGiveCount < summMinGiveCourse ||
+      summGetCount > summMaxGetCourse ||
+      summGiveCount < summMinGetCourse
+    ) {
+      setValid(false);
+    } else {
+      setValid(true);
+    }
+  };
 
-	return (
-		<FormContext.Provider
-			value={{
-				valuteList,
-				setValuteList,
+  useEffect(() => {
+    calculateCount(giveCount, giveValute, getValute);
+  }, [giveCount, giveValute, getValute]);
 
-				give: {
-					count: giveCount,
-					setCount: setGiveCount,
-					valute: giveValute,
-					setValute: setGiveValute,
-					email: email,
-					setEmail,
-				},
-				get: {
-					count: getCount,
-					setCount: setGetCount,
-					valute: getValute,
-					setValute: setGetValute,
-					forms: getValuteForms,
-					setForms: setGetValuteForms,
-					data: getValuteData,
-					onChangeData,
-				},
-				isValid,
-				setValid,
-			}}
-		>
-			{children}
-		</FormContext.Provider>
-	);
+  return (
+    <FormContext.Provider
+      value={{
+        valuteList,
+        setValuteList,
+
+        give: {
+          count: giveCount,
+          setCount: setGiveCount,
+          valute: giveValute,
+          setValute: setGiveValute,
+          email: email,
+          setEmail,
+        },
+        get: {
+          count: getCount,
+          setCount: setGetCount,
+          valute: getValute,
+          setValute: setGetValute,
+          forms: getValuteForms,
+          setForms: setGetValuteForms,
+          data: getValuteData,
+          onChangeData,
+        },
+        isValid,
+        setValid,
+      }}
+    >
+      {children}
+    </FormContext.Provider>
+  );
 };
