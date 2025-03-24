@@ -1,14 +1,18 @@
-import React from 'react'
+import React from "react";
 
-import Layout from '@/components/Layout'
-import Pay from '@/pages/Pay'
+import Layout from "@/components/Layout";
+import Pay from "@/pages/Pay";
 
-export default function PayPage () {
+const PayPage = (): React.ReactNode => {
   return (
-    <Layout metadata={{
-      title: 'Оплата | Fire Exchange'
-    }}>
+    <Layout
+      metadata={{
+        title: "Оплата | Fire Exchange",
+      }}
+    >
       <Pay />
     </Layout>
-  )
-}
+  );
+};
+
+export default PayPage;

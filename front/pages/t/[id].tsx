@@ -1,14 +1,18 @@
-import React from 'react'
+import React from "react";
 
-import Layout from '@/components/Layout'
-import Confirmation from '@/pages/Confirmation'
+import Layout from "@/components/Layout";
+import Confirmation from "@/pages/Confirmation";
 
-export default function ConfPage () {
+const ConfPage = (): React.ReactNode => {
   return (
-    <Layout metadata={{
-      title: 'Подтверждение | Fire Exchange'
-    }}>
+    <Layout
+      metadata={{
+        title: "Подтверждение | Fire Exchange",
+      }}
+    >
       <Confirmation />
     </Layout>
-  )
-}
+  );
+};
+
+export default ConfPage;

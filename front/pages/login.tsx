@@ -3,7 +3,7 @@ import React from 'react'
 import Layout from '@/components/Layout'
 import Login from '@/pages/Login'
 
-export default function LoginPage () {
+const LoginPage = (): React.ReactNode => {
   return (
     <Layout metadata={{
       title: 'Вход | Fire Exchange'
@@ -12,3 +12,5 @@ export default function LoginPage () {
     </Layout>
   )
 }
+
+export default LoginPage;

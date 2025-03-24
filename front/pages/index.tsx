@@ -1,14 +1,18 @@
-import React from 'react'
+import React from "react";
 
-import Layout from '@/components/Layout'
-import MainPage from '@/pages/Main'
+import Layout from "@/components/Layout";
+import MainPage from "@/pages/Main";
 
-export default function HomePage () {
+const HomePage = (): React.ReactNode => {
   return (
-    <Layout metadata={{
-      title: 'Главная | Fire Exchange'
-    }}>
+    <Layout
+      metadata={{
+        title: "Главная | Fire Exchange",
+      }}
+    >
       <MainPage />
     </Layout>
-  )
-}
+  );
+};
+
+export default HomePage;

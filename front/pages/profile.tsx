@@ -1,14 +1,18 @@
-import React from 'react'
+import React from "react";
 
-import Layout from '@/components/Layout'
-import Profile from '@/pages/Profile'
+import Layout from "@/components/Layout";
+import Profile from "@/pages/Profile";
 
-export default function ProfilePage () {
+const ProfilePage = (): React.ReactNode => {
   return (
-    <Layout metadata={{
-      title: 'Профиль | Fire Exchange'
-    }}>
+    <Layout
+      metadata={{
+        title: "Профиль | Fire Exchange",
+      }}
+    >
       <Profile />
     </Layout>
-  )
-}
+  );
+};
+
+export default ProfilePage;

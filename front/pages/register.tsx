@@ -1,14 +1,18 @@
-import React from 'react'
+import React from "react";
 
-import Layout from '@/components/Layout'
-import Register from '@/pages/Register'
+import Layout from "@/components/Layout";
+import Register from "@/pages/Register";
 
-export default function RegisterPage () {
+const RegisterPage = (): React.ReactNode => {
   return (
-    <Layout metadata={{
-      title: 'Регистрация | Fire Exchange'
-    }}>
+    <Layout
+      metadata={{
+        title: "Регистрация | Fire Exchange",
+      }}
+    >
       <Register />
     </Layout>
-  )
-}
+  );
+};
+
+export default RegisterPage;
