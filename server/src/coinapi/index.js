@@ -22,7 +22,8 @@ function getToken(id) {
 const coins = {
   ethereum: async () => {
     const request = await getToken('ethereum')
-    const course = request.market_data.current_price.rub
+    if (!request?.market_data) return null;
+    const course = request?.market_data?.current_price?.rub
 
     const valute = await mongoose.Valute.findOne({ key: 'ETH' })
     if (!valute) return null
@@ -32,7 +33,8 @@ const coins = {
 
   tether: async () => {
     const request = await getToken('tether')
-    const course = request.market_data.current_price.rub
+    if (!request?.market_data) return null;
+    const course = request?.market_data?.current_price?.rub
 
     const valutes = await mongoose.Valute.find({ key: 'USDT' })
     if (!valutes) return null
@@ -47,7 +49,8 @@ const coins = {
 
   dash: async () => {
     const request = await getToken('dash')
-    const course = request.market_data.current_price.rub
+    if (!request?.market_data) return null;
+    const course = request?.market_data?.current_price?.rub
 
     const valute = await mongoose.Valute.findOne({ key: 'DASH' })
     if (!valute) return null
@@ -57,7 +60,8 @@ const coins = {
 
   monero: async () => {
     const request = await getToken('monero')
-    const course = request.market_data.current_price.rub
+    if (!request?.market_data) return null;
+    const course = request?.market_data?.current_price?.rub
 
     const valute = await mongoose.Valute.findOne({ key: 'XMR' })
     valute.course = course
@@ -66,7 +70,8 @@ const coins = {
 
   bitcoin: async () => {
     const request = await getToken('bitcoin')
-    const course = request.market_data.current_price.rub
+    if (!request?.market_data) return null;
+    const course = request?.market_data?.current_price?.rub
 
     const valute = await mongoose.Valute.findOne({ key: 'BTC' })
     if (!valute) return null
@@ -85,7 +90,7 @@ function call () {
   try {
     Object.keys(coins).map(async key => {
       coins[key]()
-      await pause(1000 * 30)
+      await pause(1000 * 55)
     })
   } catch (e) {
     console.error(e)
@@ -93,6 +98,7 @@ function call () {
 }
 
 module.exports = function main() {
+  pause(1000 * 60 * 5)
   call()
   const daemon = setInterval(call, 1000 * 60 * 10)
 

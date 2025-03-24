@@ -51,7 +51,6 @@ module.exports = async function (response) {
 		.then((wallet) => {
 			data.wallet_id = wallet._id;
 
-			//data.give.course = valute.course
 			return wallet;
 		})
 		.catch(() => {
@@ -181,7 +180,7 @@ module.exports = async function (response) {
 				.then((transaction) => {
 
 					// notify on chat
-					global.telegram.controller.sendMessage(`Новая заявка на обмен: ${transaction.order_id}`)
+					// global.telegram.controller.sendMessage(`Новая заявка на обмен: ${transaction.order_id}`)
 
 					return {
 						status: true,
@@ -214,6 +213,7 @@ module.exports = async function (response) {
 					};
 				})
 				.catch((err) => {
+					console.error(err)
 					return {
 						status: false,
 						error: true,

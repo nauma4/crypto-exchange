@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { FormContext, ValuteItemType, ValuteFormItemType, FormValuteListType } from "./Context";
+import {
+  FormContext,
+  ValuteItemType,
+  ValuteFormItemType,
+  FormValuteListType,
+} from "./Context";
 
 type FormProviderPropTypes = {
   children: React.ReactNode;
@@ -8,15 +13,22 @@ type FormProviderPropTypes = {
 export const FormProvider: React.FC<FormProviderPropTypes> = ({ children }) => {
   const [isValid, setValid] = useState<boolean>(true);
 
-  const [valuteList, setValuteList] = useState<FormValuteListType>({ get: [], give: [] });
+  const [valuteList, setValuteList] = useState<FormValuteListType>({
+    get: [],
+    give: [],
+  });
   const [giveValute, setGiveValute] = useState<ValuteItemType | null>(null);
-  const [giveCount, setGiveCount] = useState<string>("");
+  const [giveCount, setGiveCount] = useState<string>("1");
   const [email, setEmail] = useState<string>("");
 
   const [getValute, setGetValute] = useState<ValuteItemType | null>(null);
   const [getCount, setGetCount] = useState<string>("");
-  const [getValuteForms, setGetValuteForms] = useState<ValuteFormItemType[]>([]);
-  const [getValuteData, setGetValuteData] = useState<Record<string, string>>({});
+  const [getValuteForms, setGetValuteForms] = useState<ValuteFormItemType[]>(
+    []
+  );
+  const [getValuteData, setGetValuteData] = useState<Record<string, string>>(
+    {}
+  );
 
   const onChangeData = (name: string) => {
     return (value: string) => {
