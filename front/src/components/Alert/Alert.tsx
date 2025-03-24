@@ -2,17 +2,17 @@ import React from "react";
 import clsx from "clsx";
 
 import { useOnClickOutside } from "@/helpers/useOnClickOutside";
-import { AlertContextTypes } from "./Provider";
+import { AlertContextPropTypes } from "./Provider";
 
 import styles from "./alert.module.scss";
 
-export const Alert: React.FC<AlertContextTypes> = ({
+export const Alert: React.FC<AlertContextPropTypes> = ({
   isOpen,
   title,
   description,
   onClose,
 }): React.ReactNode => {
-  const ref = React.createRef<HTMLDivElement>();
+  const ref: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>();
 
   useOnClickOutside(ref, onClose);
 

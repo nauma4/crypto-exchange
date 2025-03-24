@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./input.module.css";
 
-export interface InputPropTypes {
+export type InputPropTypes = {
   label?: string;
   value?: string;
 }

@@ -7,8 +7,8 @@ import { useAuth } from "@/store/AuthorizationProvider";
 
 import styles from "./header.module.scss";
 
-export interface HeaderPropTypes {
-  toggleSidebar: any;
+export type HeaderPropTypes = {
+  toggleSidebar: () => void;
 }
 
 export const HeaderComponent: React.FC<HeaderPropTypes> = ({

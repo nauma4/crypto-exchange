@@ -2,24 +2,24 @@ import React from "react";
 
 import { Alert } from "./Alert";
 
-export type AlertContextTypes = {
-  isOpen: boolean;
-  title: string | null;
-  description: string | null;
-  showAlert?: (title: string | null, description: string | null) => void;
-  onClose: () => void;
-};
-
 type AlertContextDataTypes = {
   title: string | null;
   description: string | null;
 };
 
+type AlertContextTypes = {
+  isOpen: boolean;
+  showAlert?: (title: string | null, description: string | null) => void;
+  onClose: () => void;
+}
+
+export type AlertContextPropTypes = AlertContextDataTypes & AlertContextTypes;
+
 type AlertProviderTypes = {
   children: React.ReactNode;
 };
 
-export const AlertContext = React.createContext<AlertContextTypes>({
+export const AlertContext = React.createContext<AlertContextPropTypes>({
   isOpen: false,
   title: null,
   description: null,

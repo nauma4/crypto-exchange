@@ -5,13 +5,13 @@ import styles from "./select.module.scss";
 
 import { useOnClickOutside } from "@/helpers/useOnClickOutside";
 
-export interface SelectItemPropTypes {
+export type SelectItemPropTypes = {
   image?: string;
   name: string;
   disabled?: boolean;
 }
 
-export interface SelectPropTypes {
+export type SelectPropTypes = {
   className?: string;
   value: SelectItemPropTypes;
   list: Array<SelectItemPropTypes>;
